@@ -4,9 +4,10 @@ using UnityEngine;
 public class CardRotater : MonoBehaviour
 {
     public float rotationSpeed;
+    
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))        
         {
             StartCoroutine(FlipCard(rotationSpeed));
         }
