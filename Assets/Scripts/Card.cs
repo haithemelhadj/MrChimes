@@ -66,7 +66,7 @@ public class Card : MonoBehaviour
     }
 
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -74,10 +74,14 @@ public class Card : MonoBehaviour
             TouchingPlayer = true;
 
         }
-        else
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player is not in the trigger");
+            Debug.Log("Player is in the trigger");
             TouchingPlayer = false;
+
         }
     }
 }
