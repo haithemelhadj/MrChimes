@@ -15,7 +15,7 @@ public class MrChimesCode : MonoBehaviour
     {
         x = Random.Range(0, 2) == 0 ? -1 : 1;
         y = Random.Range(0, 2) == 0 ? -1 : 1;
-        rb.velocity = new Vector2(speed * x, speed * y);
+        //rb.velocity = new Vector2(speed * x, speed * y);
 
         
     }
@@ -23,8 +23,8 @@ public class MrChimesCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
+        transform.Translate(new Vector2(speed * x, speed * y) * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -32,13 +32,15 @@ public class MrChimesCode : MonoBehaviour
         if (collision.gameObject.tag == "Vwall")
         {
             x = -x;
-            rb.velocity = new Vector2(speed * x, speed * y);
-            
+            x = Random.Range(0, -x);// == 0 ? -1 : 1;
+            //rb.velocity = new Vector2(speed * x, speed * y);
+
         }
         else if (collision.gameObject.tag == "Hwall")
         {
             y = -y;
-            rb.velocity = new Vector2(speed * x, speed * y);
+            y = Random.Range(0, -y);// == 0 ? -1 : 1;
+            //rb.velocity = new Vector2(speed * x, speed * y);
         }
 
     }
