@@ -7,10 +7,12 @@ public class Card : MonoBehaviour
     private SpriteRenderer rend;
 
     [SerializeField]
-    private Sprite faceSprite, backSprite;
+    public Sprite faceSprite, backSprite;
+    [SerializeField] private Collider2D coll;
 
     private bool coroutineAllowed, facedUp;
     [SerializeField] private bool TouchingPlayer = false;
+    [SerializeField] private float WaitTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,17 +22,24 @@ public class Card : MonoBehaviour
         coroutineAllowed = true;
         facedUp = false;
     }
-
-    
-    private void Update()
+    //-------------------------------------------------------
+    public void RotateCardCoroutineCalled()
     {
-        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer)
+        StartCoroutine(RotateCard());
+    }
+    //-------------------------------------------------------
+
+    public void Update()
+    {
+        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer && !facedUp)
         {
             StartCoroutine(RotateCard());
+            GameManager.Cards.Add(this);
+            GameManager.CheckCards();
         }
     }
 
-    private IEnumerator RotateCard()
+    public IEnumerator RotateCard()
     {
         coroutineAllowed = false;
 
@@ -43,7 +52,7 @@ public class Card : MonoBehaviour
                 {
                     rend.sprite = faceSprite;
                 }
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(WaitTimer);
             }
         }
 
@@ -56,7 +65,7 @@ public class Card : MonoBehaviour
                 {
                     rend.sprite = backSprite;
                 }
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(WaitTimer);
             }
         }
 
@@ -84,4 +93,11 @@ public class Card : MonoBehaviour
 
         }
     }
+    public void SetCollToInactive()
+    {
+        coll.enabled = false;
+    }
 }
+    
+        
+

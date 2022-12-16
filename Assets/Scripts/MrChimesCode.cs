@@ -1,47 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MrChimesCode : MonoBehaviour
 {
-    public float speed;
-    public Rigidbody2D rb;
-    public float mvnt;
-    public float x, y;
-    
-
-    // Start is called before the first frame update
+    [SerializeField] private float x, y;
+    [SerializeField] private float Speed;
+    [SerializeField] private float Xvalue, Yvalue;
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        Xvalue = Random.Range(0.1f, 1f);
+        Yvalue = Random.Range(0.1f, 1f);
         x = Random.Range(0, 2) == 0 ? -1 : 1;
-        y = Random.Range(0, 2) == 0 ? -1 : 1;
-        //rb.velocity = new Vector2(speed * x, speed * y);
-
-        
+        y = Random.Range(0, 2) == 0 ? -1 : 1;       
+    }
+    private void Update()
+    {
+        transform.Translate(new  Vector2(Xvalue * x, Yvalue * y).normalized * Time.deltaTime * Speed);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        transform.Translate(new Vector2(speed * x, speed * y) * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Vwall")
+        if(collision.CompareTag("Hwall"))
         {
-            x = -x;
-            x = Random.Range(0, -x);// == 0 ? -1 : 1;
-            //rb.velocity = new Vector2(speed * x, speed * y);
-
-        }
-        else if (collision.gameObject.tag == "Hwall")
-        {
+            Yvalue = Random.Range(0.1f, 1f);
             y = -y;
-            y = Random.Range(0, -y);// == 0 ? -1 : 1;
-            //rb.velocity = new Vector2(speed * x, speed * y);
+            Speed += 0.1f;
         }
-
-    }
+        if (collision.CompareTag("Vwall"))
+        {
+            Xvalue = Random.Range(0.1f, 1f);
+            x = -x;
+            Speed += 0.1f;
+        }
+    }    
 }

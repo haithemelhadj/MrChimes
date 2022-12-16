@@ -126,4 +126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faceSprite: {fileID: 0}
   backSprite: {fileID: -1769606066, guid: 8ce821d84330e0d48be65f37bf4fd2fc, type: 3}
+  coll: {fileID: 303870141080422985}
   TouchingPlayer: 0
+  WaitTimer: 0.04
