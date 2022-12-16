@@ -5,6 +5,7 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     private SpriteRenderer rend;
+    //public GameObject GameManager;
 
     [SerializeField]
     public Sprite faceSprite, backSprite;
@@ -31,8 +32,9 @@ public class Card : MonoBehaviour
 
     public void Update()
     {
-        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer && !facedUp)
+        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer)// && !facedUp)
         {
+            Debug.Log("count=" + GameManager.Cards.Count);
             StartCoroutine(RotateCard());
             GameManager.Cards.Add(this);
             GameManager.CheckCards();
@@ -79,7 +81,7 @@ public class Card : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player is in the trigger");
+            //Debug.Log("Player is in the trigger");
             TouchingPlayer = true;
 
         }
@@ -88,7 +90,7 @@ public class Card : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player is in the trigger");
+            //Debug.Log("Player is in the trigger");
             TouchingPlayer = false;
 
         }

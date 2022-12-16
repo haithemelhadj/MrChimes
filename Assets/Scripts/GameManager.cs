@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //public static GameObject[] Cards;
-    [SerializeField] public  static List<Card> Cards; // list of cards empty but adds 1 value when player picks a card
+    //[SerializeField] public static  List<Card> Cards; // list of cards empty but adds 1 value when player picks a card
+    [NonSerialized] public static  List<Card> Cards = new List<Card>(); // list of cards empty but adds 1 value when player picks a card
 
     
     // Update is called once per frame
@@ -18,7 +20,10 @@ public class GameManager : MonoBehaviour
 
                 Cards[0].SetCollToInactive();//set the card collider to inactive from card script
                 Cards[1].SetCollToInactive();
-                Cards.Clear();//clear the list of cards
+                Debug.Log("cards are the same");
+                //Cards.Clear();//clear the list of cards
+                Cards = null;
+                
             }
             else
             {
@@ -26,11 +31,11 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(Cards[0].RotateCard());//rotate the cards back from card script
                 StartCoroutine(Cards[1].RotateCard());
                 */
+                Debug.Log("cards are not the same");
                 Cards[0].RotateCardCoroutineCalled();
                 Cards[1].RotateCardCoroutineCalled();
             }
-        }
-        
+        }        
     }
     
 }

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303870141080422984}
+  - component: {fileID: 303870141080422986}
   - component: {fileID: 303870141080422987}
   - component: {fileID: 303870141080422985}
-  - component: {fileID: 303870141080422986}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -28,12 +28,29 @@ Transform:
   m_GameObject: {fileID: 303870141080422997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.18, y: 1.71, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303870141080422986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303870141080422997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062f8c1034449b64d8d5ac7138146863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faceSprite: {fileID: 0}
+  backSprite: {fileID: -1769606066, guid: 8ce821d84330e0d48be65f37bf4fd2fc, type: 3}
+  coll: {fileID: 303870141080422985}
+  TouchingPlayer: 0
+  WaitTimer: 0.04
 --- !u!212 &303870141080422987
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -112,20 +129,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.33, y: 5.58}
   m_EdgeRadius: 0
---- !u!114 &303870141080422986
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303870141080422997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 062f8c1034449b64d8d5ac7138146863, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  faceSprite: {fileID: 0}
-  backSprite: {fileID: -1769606066, guid: 8ce821d84330e0d48be65f37bf4fd2fc, type: 3}
-  coll: {fileID: 303870141080422985}
-  TouchingPlayer: 0
-  WaitTimer: 0.04
