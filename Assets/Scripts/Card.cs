@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+
+    public static List<Card> Cards = new List<Card>();//duplicate 
+
     private SpriteRenderer rend;
     //public GameObject GameManager;
 
@@ -34,10 +37,11 @@ public class Card : MonoBehaviour
     {
         if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer)// && !facedUp)
         {
-            Debug.Log("count=" + GameManager.Cards.Count);
+            
             StartCoroutine(RotateCard());
-            GameManager.Cards.Add(this);
+            Cards.Add(this);
             GameManager.CheckCards();
+            Debug.Log("count=" + Cards.Count);
         }
     }
 
@@ -74,6 +78,34 @@ public class Card : MonoBehaviour
         coroutineAllowed = true;
 
         facedUp = !facedUp;
+        //-------- i added this
+        if (Cards.Count >= 2 && facedUp)
+        {
+            
+
+            if (Cards[0].faceSprite.name == Cards[1].faceSprite.name) // check if the two cards have the same face sprite
+            {
+
+                Cards[0].SetCollToInactive();//set the card collider to inactive from card script
+                Cards[1].SetCollToInactive();
+                Debug.Log("cards are the same");
+
+            }
+            else
+            {
+                
+                Cards[0].RotateCardCoroutineCalled();//rotate both cards if not the same
+                Cards[1].RotateCardCoroutineCalled();
+                Debug.Log("cards are not the same");
+
+            }
+            Cards.Clear();
+        }
+
+
+
+
+        //-------end my add
     }
 
 
