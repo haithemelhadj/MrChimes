@@ -50,7 +50,7 @@ MonoBehaviour:
   backSprite: {fileID: -1769606066, guid: 8ce821d84330e0d48be65f37bf4fd2fc, type: 3}
   coll: {fileID: 303870141080422985}
   TouchingPlayer: 0
-  WaitTimer: 0.04
+  WaitTimer: 0.03
 --- !u!212 &303870141080422987
 SpriteRenderer:
   m_ObjectHideFlags: 0

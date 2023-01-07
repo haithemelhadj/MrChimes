@@ -35,7 +35,7 @@ public class Card : MonoBehaviour
 
     public void Update()
     {
-        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer)// && !facedUp)
+        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer && Cards.Count<2)// && !facedUp)
         {
             
             StartCoroutine(RotateCard());
@@ -79,7 +79,7 @@ public class Card : MonoBehaviour
 
         facedUp = !facedUp;
         //-------- i added this
-        if (Cards.Count >= 2 && facedUp)
+        if (Cards.Count >= 2 && Cards[0].facedUp && Cards[1].facedUp)
         {
             
 
@@ -91,13 +91,17 @@ public class Card : MonoBehaviour
                 Debug.Log("cards are the same");
 
             }
-            else
+            else if (Cards[0].faceSprite.name != Cards[1].faceSprite.name)
             {
                 
                 Cards[0].RotateCardCoroutineCalled();//rotate both cards if not the same
                 Cards[1].RotateCardCoroutineCalled();
                 Debug.Log("cards are not the same");
 
+            }
+            else
+            {
+                Debug.Log("error");
             }
             Cards.Clear();
         }
