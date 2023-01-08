@@ -89,9 +89,10 @@ public class Card : MonoBehaviour
                 Cards[0].SetCollToInactive();//set the card collider to inactive from card script
                 Cards[1].SetCollToInactive();
                 Debug.Log("cards are the same");
+                GameManager.NumberOfSolvedCards +=2;
 
             }
-            else if (Cards[0].faceSprite.name != Cards[1].faceSprite.name)
+            else if (Cards[0].faceSprite.name != Cards[1].faceSprite.name)//check if the two cards have different face sprites
             {
                 
                 Cards[0].RotateCardCoroutineCalled();//rotate both cards if not the same
@@ -99,11 +100,12 @@ public class Card : MonoBehaviour
                 Debug.Log("cards are not the same");
 
             }
-            else
+            else//print error if there is an error
             {
                 Debug.Log("error");
             }
-            Cards.Clear();
+            Cards.Clear();//clear list of 2 cards to fill with two new cards if player picks two new cards
+            
         }
 
 

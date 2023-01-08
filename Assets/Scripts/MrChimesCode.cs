@@ -28,13 +28,13 @@ public class MrChimesCode : MonoBehaviour
         {
             Yvalue = Random.Range(0.1f, 1f);
             y = -y;
-            Speed += 0.1f;
+            //Speed += 0.1f;
         }
         if (collision.CompareTag("Vwall"))
         {
             Xvalue = Random.Range(0.1f, 1f);
             x = -x;
-            Speed += 0.1f;
+            //Speed += 0.1f;
         }
     }    
 }

@@ -6,11 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public static GameObject[] Cards;
+    public GameObject Card;
+    public static int TotalCards;
     //[SerializeField] public static  List<Card> Cards; // list of cards empty but adds 1 value when player picks a card
     //[NonSerialized] public static  List<Card> Cards = new List<Card>(); // list of cards empty but adds 1 value when player picks a card
 
-    
+    public static int NumberOfSolvedCards ;
+
+    private void Start()
+    {
+        TotalCards = Card.transform.childCount;
+    }
+
+    private void Update()
+    {
+        if (NumberOfSolvedCards  >= TotalCards)//check if all cards are solved
+        {
+            //load next level
+            NextLevel();            
+        }
+    }
+
     // Update is called once per frame
     public static void CheckCards()
     {/*
@@ -39,6 +55,10 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public static void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }

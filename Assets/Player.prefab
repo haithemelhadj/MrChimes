@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380aa4d155d4c14498e866da1d707823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   rb: {fileID: 7629824765689771513}
 --- !u!50 &7629824765689771513
 Rigidbody2D:

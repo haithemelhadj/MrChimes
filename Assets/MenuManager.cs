@@ -24,5 +24,12 @@ public class MenuManager : MonoBehaviour
     public void goToStage2()
     {
         SceneManager.LoadScene("Stage 2");
+    }public void goToStage3()
+    {
+        SceneManager.LoadScene("Stage 3");
+    }
+    public void goToStage4()
+    {
+        SceneManager.LoadScene("Stage 4");
     }
 }
