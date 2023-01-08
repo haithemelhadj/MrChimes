@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Vmvnt = Input.GetAxisRaw("Vertical");        
         Hmvnt = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(Hmvnt*speed, Vmvnt * speed);
+        rb.velocity = new Vector2(Hmvnt, Vmvnt).normalized*speed;
         if (Health <= 0)
         {
             Debug.Log("Game Over");
