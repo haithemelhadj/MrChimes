@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     }
     public static void NextLevel()
     {
+        NumberOfSolvedCards = 0;
+        TotalCards = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
