@@ -35,7 +35,7 @@ public class Card : MonoBehaviour
 
     public void Update()
     {
-        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer && Cards.Count<2)// && !facedUp)
+        if (coroutineAllowed && Input.GetKeyDown(KeyCode.Space) && TouchingPlayer && Cards.Count<2 && !facedUp)
         {
             
             StartCoroutine(RotateCard());
