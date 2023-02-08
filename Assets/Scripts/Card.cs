@@ -85,7 +85,7 @@ public class Card : MonoBehaviour
 
             if (Cards[0].faceSprite.name == Cards[1].faceSprite.name) // check if the two cards have the same face sprite
             {
-
+                //9erd yawli ya3ml sound for 5secs w yzid fel speed
                 Cards[0].SetCollToInactive();//set the card collider to inactive from card script
                 Cards[1].SetCollToInactive();
                 Debug.Log("cards are the same");

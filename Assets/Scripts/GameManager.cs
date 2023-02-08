@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
     public GameObject Card;
     public static int TotalCards;
     //[SerializeField] public static  List<Card> Cards; // list of cards empty but adds 1 value when player picks a card
@@ -13,6 +14,10 @@ public class GameManager : MonoBehaviour
 
     public static int NumberOfSolvedCards ;
 
+    private void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     private void Start()
     {
         TotalCards = Card.transform.childCount;

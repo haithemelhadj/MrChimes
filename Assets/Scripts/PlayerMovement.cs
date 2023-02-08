@@ -24,14 +24,23 @@ public class PlayerMovement : MonoBehaviour
             Time.timeScale = 1;// 0;
         }
     }
-    
-    
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Chimes")
+        {
+            Debug.Log("hit chimes!");
+            Time.timeScale = 0;
+            Health--;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Chimes")
         {
             Debug.Log("hit chimes!");
+            Time.timeScale = 0;
             Health--;
         }
     }
